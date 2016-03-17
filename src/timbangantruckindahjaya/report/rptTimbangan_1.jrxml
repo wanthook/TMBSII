@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptTimbangan" pageWidth="612" pageHeight="396" columnWidth="536" leftMargin="20" rightMargin="56" topMargin="36" bottomMargin="56" whenResourceMissingType="Empty" isIgnorePagination="true" uuid="9414be0c-d731-43e0-9571-2a524f93db72">
+	<property name="ireport.zoom" value="1.2396694214876032"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="0438c3c2-df12-4976-96a8-22bc9523c203"/>
+	<parameter name="timbangan_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="printed_by" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select timbangan.*, user.nama created_name ,jenis_barang.nama_barang, date_format(timbangan.tanggal_masuk,'%d-%m-%Y') tgl_in,
+date_format(timbangan.tanggal_keluar,'%d-%m-%Y') tgl_out
+from timbangan 
+     left join user 
+	on user.user_id=timbangan.created_by
+     left join jenis_barang
+	 on timbangan.id_barang=jenis_barang.id_barang
+where timbangan.hapus=1
+      and timbangan.timbangan_id=$P{timbangan_id}]]>
+	</queryString>
+	<field name="tanggal_masuk" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal_keluar" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tiket" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_pol" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="relasi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_barang" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_supir" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="berat_gross" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="berat_tara" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="berat_netto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="harga_kg" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_harga" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jam_masuk" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jam_keluar" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="catatan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hapus" class="java.lang.Integer">
+		<fieldDescription><![CDATA[0=Hapus, 1=Aktiv, 2=Cancel]]></fieldDescription>
+	</field>
+	<field name="timbangan_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="print" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sj" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="po" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="type" class="java.lang.String">
+		<fieldDescription><![CDATA[IN=MasukinBarang, OUT=KELUARIN BARANG]]></fieldDescription>
+	</field>
+	<field name="alasan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="created_by" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="create_date" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="modified_by" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="modify_date" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="created_name" class="java.lang.String"/>
+	<field name="nama_barang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_in" class="java.lang.String"/>
+	<field name="tgl_out" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="84" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="2" width="248" height="30" uuid="c50e2aaa-eae9-48d8-9af0-de930edc33bb"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Courier New" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[PT. INDAH JAYA TEXTILE INDUSTRY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="32" width="247" height="20" uuid="344c66ca-06b5-4e8c-ac15-c738eb5ebb53"/>
+				<textElement>
+					<font fontName="Courier New" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[STRUK JEMBATAN TIMBANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="84" height="20" uuid="302f8d20-2dbf-4f54-b0a7-cb0325282189"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Reff. SJ :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="38" width="84" height="20" uuid="e0a038d0-a10c-4f2f-9f7f-7abd5dab66f4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Tanggal Cetak :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="334" y="38" width="187" height="20" uuid="797ab1e4-18b6-41dd-9927-a8fcefd4c805"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="false"/>
+					<paragraph lineSpacing="Single" leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="0" width="187" height="20" uuid="54d84861-c39b-4315-b3f5-e4b232e657bd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sj}.split(",").length>1?$F{sj}.split(",")[0]+" *":$F{sj}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="19" width="84" height="20" uuid="c031277f-771c-4f3b-8fad-cd10be5d7e6f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[PO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="334" y="19" width="187" height="20" uuid="36f01709-dd1c-497b-a040-052968bdc34a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{po}.split(",").length>1?$F{po}.split(",")[0]+" *":$F{po}.toString()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="3" y="52" width="229" height="23" uuid="bce210d1-8705-40f9-a33a-8e87ec0d4305"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{tiket}.toString()]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="8" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="4" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="265" splitType="Stretch">
+			<staticText>
+				<reportElement x="67" y="170" width="135" height="20" uuid="b1fcbbbb-4320-43e4-a211-c380a03ac041"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Di Check Oleh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="170" width="135" height="20" uuid="f3382d7d-86e0-4927-852c-c872f4855d4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Supir Ekspedisi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="250" y="82" width="90" height="20" uuid="6628877d-c70d-41a7-87e3-9a082abfe728"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Jam Masuk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="250" y="102" width="90" height="20" uuid="e396b3d5-c078-4ce2-bd90-020b8788e90c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Jam Keluar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="3" y="2" width="90" height="20" uuid="541d3029-7b2f-4c2e-8691-078cdb12934a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="10" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Tanggal Masuk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="3" y="22" width="90" height="20" uuid="c0e5fff2-6189-4a9a-9f28-4e2265e98771"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Tiket #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="3" y="42" width="90" height="20" uuid="c07f5bec-c673-48ba-b8b2-7744e3c5ecdb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Truk #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="3" y="62" width="90" height="20" uuid="177ef09a-3e92-4e72-8d58-6736eaa2f5fe"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Relasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="3" y="82" width="90" height="20" uuid="9505e77f-6a73-46a6-9ebf-6014f0c9bab7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Nama Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="3" y="102" width="90" height="20" uuid="5e7d28ec-4dda-46a0-afef-500f8d0a068a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Nama Supir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="3" y="122" width="90" height="20" uuid="b7a2f726-5005-4872-b99f-5f5ab6335b53"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="250" y="42" width="90" height="20" uuid="f681b063-16b1-4582-a9e6-33f9fe2351f9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Berat Tara]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="250" y="22" width="90" height="20" uuid="32662bd9-3201-45af-ac35-c1e4516917b4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Berat Gross]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="250" y="62" width="90" height="20" uuid="e7090b12-f043-4acc-b7c1-1e258e84631a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Berat Netto]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table" x="93" y="2" width="157" height="20" uuid="3fc6651a-ea88-4e65-9354-317054d66769"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_in}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="93" y="22" width="157" height="20" uuid="c3bfeb5b-cd1b-43ce-a4b9-7c42e222c8a3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tiket}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="93" y="42" width="157" height="20" uuid="b2f2c15e-928b-4300-8772-d03a707aa143"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_pol}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="93" y="62" width="157" height="20" uuid="03ba11b3-61cd-456c-ac9d-1a79e6b7cb31"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{relasi}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="93" y="82" width="157" height="20" uuid="f102935a-8510-47d3-a09d-0ca90c1e0b21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_barang}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="93" y="102" width="157" height="20" uuid="1993c3e3-baf7-4245-9744-7ed67f2cc806"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_supir}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="93" y="122" width="404" height="30" uuid="f8418639-36cf-433a-82ca-6699137aea02"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{catatan}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Transparent" x="340" y="22" width="157" height="20" uuid="433dfdf0-fda1-473e-a5b9-2e6ef62e3377"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="Courier New" size="12" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Single" leftIndent="2" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{berat_gross}.toString()+" kg"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="340" y="42" width="157" height="20" uuid="af3d2ef1-0fc1-42c1-9c16-d92909d78d7a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{berat_tara}.toString()+" kg"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="340" y="62" width="157" height="20" uuid="23ab6ba3-65e7-4382-861f-cc39fd4f2587"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{berat_netto}.toString()+" kg"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="340" y="82" width="157" height="20" uuid="7d48eeae-c73a-4e80-9175-8bd085b4b5d3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jam_masuk}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="340" y="102" width="157" height="20" uuid="76e18deb-bbf2-4b39-a529-fd356080c19b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jam_keluar}.toString()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="67" y="221" width="135" height="20" uuid="3642469f-439d-4f5b-8f71-015828d5ab30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+$P{printed_by}.toString()+" )"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="286" y="221" width="135" height="20" uuid="4897e44d-b719-4bd2-8ae5-e3bb086ceac1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+$F{nama_supir}.toString()+" )"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="340" y="2" width="157" height="20" uuid="8bdf6b0e-d85a-411d-bca3-2f2605115dba"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_out}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table" mode="Transparent" x="250" y="2" width="90" height="20" uuid="fe253c26-5441-460d-a9c8-a43f96e38d3f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="10" isBold="true"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Tanggal Keluar]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
